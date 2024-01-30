@@ -1,14 +1,37 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+
+// Ensures the code doesnt run until the browser finishes rendering all html elements
 $(document).ready(function() {
-  // Grabs the currentDay id from HTML and sets it to the current day using dayjs
+  // sets a const var equal to all button elements in the html
+  const saveBtn = $('button')
+  // event listener for the click of the button starts a function
+  saveBtn.on('click', function(e) {
+    e.preventDefault()
+    // gets the event description put in the text area for the button pressed
+    var nowPlan = $(this).siblings('.description').val();
+    // gets the hour from the corresponding button that was clicked by using (this)
+    var nowTime = $(this).parent().attr('id');
+    console.log(nowTime);
+    console.log(nowPlan);
+    // sets the event to the local storage with the key of the hour it is set in
+    localStorage.setItem(nowTime, nowPlan)
+  })
+
+
+ 
+
+   // Grabs the currentDay id from HTML and sets it to the current day using dayjs
   const dateContainer = $('#currentDay')
   const currentDate = dayjs().format('dddd, MMMM D, YYYY')
   // appends the current date to the dom
   dateContainer.append(currentDate)
-  // logs the currnet hour
+  // logs the current hour
   console.log(dayjs().hour())
+
+
+
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
