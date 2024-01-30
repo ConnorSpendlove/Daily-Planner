@@ -6,18 +6,29 @@
 $(document).ready(function() {
   // sets a const var equal to all button elements in the html
   const saveBtn = $('button')
+  const allEvents = $(".description")
   // event listener for the click of the button starts a function
-  saveBtn.on('click', function(e) {
-    e.preventDefault()
+  saveBtn.on('click', function() {
     // gets the event description put in the text area for the button pressed
     var nowPlan = $(this).siblings('.description').val();
     // gets the hour from the corresponding button that was clicked by using (this)
     var nowTime = $(this).parent().attr('id');
-    console.log(nowTime);
     console.log(nowPlan);
+    console.log(nowTime);
     // sets the event to the local storage with the key of the hour it is set in
     localStorage.setItem(nowTime, nowPlan)
+   
   })
+
+  $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+  $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+  $("#hour-11 .description").val(localStorage.getItem("hour-11"));
+  $("#hour-12 .description").val(localStorage.getItem("hour-12"));
+  $("#hour-13 .description").val(localStorage.getItem("hour-13"));
+  $("#hour-14 .description").val(localStorage.getItem("hour-14"));
+  $("#hour-15 .description").val(localStorage.getItem("hour-15"));
+  $("#hour-16 .description").val(localStorage.getItem("hour-16"));
+  $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 
 
  
